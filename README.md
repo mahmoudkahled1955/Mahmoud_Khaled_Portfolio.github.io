@@ -66,8 +66,8 @@ This portfolio includes certifications in Data Analytics and Business Intelligen
 ## 📫 Contact
 
 - GitHub: https://github.com/mahmoudkahled1955  
-- LinkedIn: [Add your LinkedIn]  
-- Email: [Add your email]  
+- LinkedIn: www.linkedin.com/in/mahmoud-khaled-169a55264
+- Email: mahmoudkhaled1955@gmail.com 
 
 ---
 
