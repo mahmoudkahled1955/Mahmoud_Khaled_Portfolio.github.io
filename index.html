@@ -1,258 +1,844 @@
 <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahmoud Khaled — Data Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<html>
-	<head>
-		
-		<title>Mahmoud Khaled's Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		
-    <style>
-      .post.featured img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        display: block;
-        max-width: 100%;
-      }
+    :root {
+      --bg:       #0b0f1a;
+      --bg2:      #111827;
+      --bg3:      #1a2236;
+      --accent:   #00d4aa;
+      --accent2:  #0099ff;
+      --text:     #e8edf5;
+      --muted:    #7a8ba0;
+      --border:   rgba(255,255,255,0.07);
+      --card-bg:  rgba(255,255,255,0.03);
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --radius: 12px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-      #main, .post.featured {
-        overflow: hidden;
-      }
-    </style>
-	</head>
-	<body class="is-preload">
+    html { scroll-behavior: smooth; }
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Mahmoud Khaled's Portfolio<br />
-						</h1>
-						<p>Junior Data Analyst in SQL, Excel, Tableau, Power BI and Python<a href="https://www.linkedin.com/in/mahmoud-khaled-169a55264/
+    /* Gradient orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(130px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.11;
+      animation: orb-drift 20s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -150px; animation-duration: 18s; }
+    .orb-2 { width: 500px; height: 500px; background: var(--accent2); bottom: 10%; left: -200px; animation-duration: 25s; animation-delay: -8s; }
+    @keyframes orb-drift {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(60px,40px) scale(1.1); }
+    }
 
-"> @Mahmoud Khaled</a>
-						
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Mahmoud Khaled</a>
-					</header>
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 0;
+      transition: background var(--transition), backdrop-filter var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(11,15,26,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #000 !important;
+      padding: 0.45em 1.2em;
+      border-radius: 6px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { opacity: 0.85; }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-							
-							
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/mahmoud-khaled-169a55264/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-							<li><a href="https://github.com/mahmoudkahled1955" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 5rem;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+      background: rgba(0,212,170,0.08);
+      border: 1px solid rgba(0,212,170,0.22);
+      border-radius: 100px;
+      padding: 0.3em 1em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.35; transform:scale(0.75); }
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5.5vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.03;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-title .accent { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 500px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-				<!-- Main -->
-					<div id="main">
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45em;
+      padding: 0.72em 1.7em;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-primary:hover { background: #00efbf; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,212,170,0.28); }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.04); transform: translateY(-2px); }
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2>About me<br />
-									</a></h2>
-									<p>Iam a Junior Data Analyst in SQL, Excel, Tableau, Power BI and Python, with a strong focus on turning raw data into clear, actionable insights. 
-									I have built a solid foundation in data cleaning, visualization, reporting and Web Scraping. I enjoy exploring data to uncover trends, improve decision-making, and tell meaningful stories through visuals and dashboards.</p>
-								</header>
-								<img src="images/me.jpg" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="https://drive.google.com/drive/u/1/folders/1QcrkRa0W3Wogo5DQw__tksPAmdsNePKY" class="button large">View my Resume</a></li>
-								</ul>
-							</article>
+    .hero-photo-wrap {
+      position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2), transparent 65%);
+      z-index: 0;
+    }
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      background: var(--bg3);
+    }
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Amazon-Web-Scraping">Automated Amazon Web Scraper<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Amazon.png" alt="" /></a>
-									<p>An automated Amazon Price Tracker built using Python to monitor product price fluctuations in real-time. The project utilizes BeautifulSoup and Requests for web scraping, Pandas for data cleaning and storage in CSV format, and smtplib for sending automated email alerts when prices drop below a target threshold.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Amazon-Web-Scraping" class="button">View Project</a></li>
-									</ul>
-								</article>
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3em;
+    }
+    .stat-label {
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 500;
+    }
 
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Hospital-Emergency-Room-Dashboard">Hospital Emergency Room Dashboard<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Hospital Emergency Room Dashboard.png" alt="" /></a>
-									<p>Developed an interactive Power BI dashboard to analyze hospital emergency room operations, focusing on patient volume, wait times, satisfaction, and referrals. The project included data cleaning, modeling, DAX calculations, and the creation of four dashboards for performance monitoring and decision-making.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Hospital-Emergency-Room-Dashboard" class="button">View Project</a></li>
-									</ul>
-								</article>
+    /* SECTION HEADER */
+    .section-header { margin-bottom: 2.8rem; }
+    .section-label {
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.55rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1; max-width: 36px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
 
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Call-Center-Dashboard">Call Center Dashboard<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Call Center.png" alt="" /></a>
-									<p>Developing a Power BI Call Center Dashboard to provide actionable insights into call center operations. The solution features a Home Dashboard tracking 5 key performance indicators (KPIs) and 6 analytical charts, alongside a Grid Dashboard for detailed data exploration and export, all built using advanced DAX and Power Query techniques.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Call-Center-Dashboard" class="button">View Project</a></li>
-									</ul>
-								</article>
+    /* DIVIDER */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border) 30%, var(--border) 70%, transparent);
+    }
 
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Data-Cleaning-and-Exploration-in-SQL">Data Cleaning and Exploration in SQL<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/layoffs.png" alt="" /></a>
-									<p>In This Project I Cleaned and Explored Data about Layoffs From about 2K Companies in MySQL.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Data-Cleaning-and-Exploration-in-SQL" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Cleaning-Data-and-Building-Dashboard-in-Excel">Bike Sales Dashboard in Excel<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Bike Sales Dashboard.png" alt="" /></a>
-									<p>Data Cleaning and Building Dashboard in Excel about Bike Sales.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Cleaning-Data-and-Building-Dashboard-in-Excel" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Data-Professional-Survey-Breakdown-in-Power-BI">Data Professional Survey Dashboard<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Data Professional Survey Breakdown.png" alt="" /></a>
-									<p>Cleaning and Making Dashboard on a Data Professional Survey in Power BI.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Data-Professional-Survey-Breakdown-in-Power-BI" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Building-Dashboard-by-Tableau">Airbnb Dashboard by Tableau<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Airbnb Project.png" alt="" /></a>
-									<p>Building Dashboard about Airbnb Data in Tableau.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Building-Dashboard-by-Tableau" class="button">View Project</a></li>
-									</ul>
-								</article>
+    /* SKILLS */
+    #skills { padding: 6rem 0; }
+    .skills-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-category {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .skill-category:hover {
+      border-color: rgba(0,212,170,0.25);
+      transform: translateY(-3px);
+    }
+    .skill-cat-icon { font-size: 1.4rem; margin-bottom: 0.7rem; display: block; }
+    .skill-cat-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .skill-tag {
+      background: rgba(0,212,170,0.07);
+      border: 1px solid rgba(0,212,170,0.16);
+      border-radius: 6px;
+      padding: 0.22em 0.65em;
+      font-size: 0.77rem;
+      font-weight: 500;
+      color: var(--text);
+    }
 
+    /* PROJECTS */
+    #projects { padding: 6rem 0; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.4rem;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0,212,170,0.28);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .project-img-wrap { overflow: hidden; }
+    .project-img {
+      width: 100%; height: 185px;
+      object-fit: cover; display: block;
+      background: var(--bg3);
+      transition: transform 0.5s ease;
+    }
+    .project-card:hover .project-img { transform: scale(1.04); }
+    .project-body {
+      padding: 1.3rem; flex: 1;
+      display: flex; flex-direction: column;
+    }
+    .project-tools { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.75rem; }
+    .tool-badge {
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      padding: 0.18em 0.55em;
+      border-radius: 4px;
+      background: rgba(0,153,255,0.1);
+      color: #60b8ff;
+      border: 1px solid rgba(0,153,255,0.2);
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 0.97rem; font-weight: 700;
+      margin-bottom: 0.55rem; line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.83rem; color: var(--muted);
+      line-height: 1.72; flex: 1;
+      margin-bottom: 1.1rem; font-weight: 300;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4em;
+      font-size: 0.81rem; font-weight: 600;
+      color: var(--accent); text-decoration: none;
+      transition: gap var(--transition);
+    }
+    .project-link:hover { gap: 0.7em; }
+    .project-link::after { content: '→'; }
 
-							
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Data-Cleaning-and-Visualizing-in-Excel-and-Power-BI">Employee Satisfaction Dashboard<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Employee Satisfaction.png" alt="" /></a>
-									<p>Cleaning and Visualizing Employee Satisfaction Survey Data using Excel and Power BI.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Data-Cleaning-and-Visualizing-in-Excel-and-Power-BI" class="button">View Project</a></li>
-									</ul>
-								</article>
-								
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Health-Conditions-and-Lifestyle-Overview">Health Conditions and Lifestyle Overview<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/Health Conditions and Lifestyle Overview.png" alt="" /></a>
-									<p>An interactive Power BI dashboard exploring the prevalence of Heart Attack, Diabetes, Stroke, and Kidney Disease. Data cleaning and preparation were performed in Excel and Power BI to ensure accuracy and consistency before visualization.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Health-Conditions-and-Lifestyle-Overview" class="button">View Project</a></li>
-									</ul>
-								</article>
+    /* CERTIFICATIONS */
+    #certifications { padding: 6rem 0; }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.4rem;
+      max-width: 720px;
+    }
+    .cert-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+    .cert-card:hover { transform: translateY(-4px); border-color: rgba(0,212,170,0.3); }
+    .cert-img-wrap {
+      background: #fff;
+      padding: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      height: 200px;
+    }
+    .cert-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .cert-body { padding: 1.1rem 1.3rem; }
+    .cert-title { font-family: var(--font-display); font-size: 0.93rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .cert-issuer { font-size: 0.79rem; color: var(--muted); }
+    .cert-issuer span { color: var(--accent); font-weight: 600; }
 
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Corona-Data-Analysis">Corona Data Analysis<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/corona.jfif" alt="" /></a>
-									<p>This project analyzes global COVID-19 data using MySQL to clean, standardize, and extract insights about confirmed, death, and recovery trends over time.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Corona-Data-Analysis" class="button">View Project</a></li>
-									</ul>
-								</article>
+    /* CONTACT */
+    #contact { padding: 6rem 0 8rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .contact-text p {
+      color: var(--muted); font-size: 0.95rem;
+      line-height: 1.8; font-weight: 300; margin-top: 1rem;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; }
+    .contact-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(0,212,170,0.07);
+      border: 1px solid rgba(0,212,170,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-item-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
+    .contact-item-val { color: var(--text); font-weight: 400; }
+    .social-links { display: flex; gap: 0.7rem; margin-top: 2rem; }
+    .social-link {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); text-decoration: none;
+      font-size: 0.9rem; font-weight: 700;
+      transition: all var(--transition);
+    }
+    .social-link:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(0,212,170,0.06); transform: translateY(-2px);
+    }
 
-								<article>
-									<header>
-										<h2><a href="https://github.com/mahmoudkahled1955/Restaurant-Orders-Analysis">Restaurant Orders Analysis<br />
-										</a></h2>
-									</header>
-									<a class="image fit"><img src="images/resturant.jpg" alt="" /></a>
-									<p>I explored and analyzed restaurant order data using MySQL. I performed data cleaning, table joins, and exploratory analysis to uncover insights about menu pricing, category performance, and customer order behavior.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/mahmoudkahled1955/Restaurant-Orders-Analysis" class="button">View Project</a></li>
-									</ul>
-								</article>
-							</section>
-							
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      position: relative; z-index: 1;
+    }
 
-																						
-				
-							
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Qalyubiyya, Egypt <br />
-								</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p>+201117931982</p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p>mahmoudkhaled1955@gmail.com</p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/mahmoud-khaled-169a55264/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-									<li><a href="https://github.com/mahmoudkahled1955" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+    /* REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: none; }
+      .hero-stats { grid-template-columns: repeat(3,1fr); }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
 
-			</div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">MK<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://drive.google.com/drive/u/1/folders/1QcrkRa0W3Wogo5DQw__tksPAmdsNePKY" class="nav-cta" target="_blank">Resume ↗</a></li>
+      </ul>
+    </div>
+  </nav>
 
-	</body>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Available for opportunities</div>
+          <h1 class="hero-title">
+            Mahmoud<br>
+            <span class="accent">Khaled</span>
+          </h1>
+          <p class="hero-sub">
+            Junior Data Analyst turning raw data into <strong>clear, actionable insights</strong>.
+            Specialized in SQL, Power BI, Tableau, Python, and Excel — 
+            with a focus on dashboards, data cleaning, and storytelling through data.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="https://www.linkedin.com/in/mahmoud-khaled-169a55264/" class="btn btn-ghost" target="_blank">LinkedIn ↗</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Projects</div>
+            </div>
+            <div>
+              <div class="stat-num">5</div>
+              <div class="stat-label">Tools</div>
+            </div>
+            <div>
+              <div class="stat-num">2</div>
+              <div class="stat-label">Certs</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo-wrap reveal reveal-delay-2">
+          <img class="hero-photo"
+            src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/me.jpg"
+            alt="Mahmoud Khaled" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">What I work with</div>
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+      <div class="skills-categories">
+        <div class="skill-category reveal reveal-delay-1">
+          <span class="skill-cat-icon">🗄️</span>
+          <div class="skill-cat-title">Databases</div>
+          <div class="skill-tags">
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">CTEs</span>
+            <span class="skill-tag">Window Functions</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-2">
+          <span class="skill-cat-icon">📊</span>
+          <div class="skill-cat-title">BI & Visualization</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">DAX</span>
+            <span class="skill-tag">Power Query</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-3">
+          <span class="skill-cat-icon">🐍</span>
+          <div class="skill-cat-title">Programming</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">BeautifulSoup</span>
+            <span class="skill-tag">smtplib</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-4">
+          <span class="skill-cat-icon">📋</span>
+          <div class="skill-cat-title">Spreadsheets</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Microsoft Excel</span>
+            <span class="skill-tag">Pivot Tables</span>
+            <span class="skill-tag">Data Cleaning</span>
+            <span class="skill-tag">Dashboards</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">My work</div>
+        <h2 class="section-title">Projects</h2>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Amazon.png" alt="Amazon Web Scraper" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Python</span><span class="tool-badge">BeautifulSoup</span><span class="tool-badge">Pandas</span></div>
+            <div class="project-title">Automated Amazon Web Scraper</div>
+            <p class="project-desc">Real-time Amazon price tracker monitoring product fluctuations and sending automated email alerts via smtplib when prices drop below a target threshold. Data stored in CSV via Pandas.</p>
+            <a href="https://github.com/mahmoudkahled1955/Amazon-Web-Scraping" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Hospital%20Emergency%20Room%20Dashboard.png" alt="Hospital ER Dashboard" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Power BI</span><span class="tool-badge">DAX</span><span class="tool-badge">Power Query</span></div>
+            <div class="project-title">Hospital Emergency Room Dashboard</div>
+            <p class="project-desc">Four interactive dashboards analyzing ER patient volume, wait times, satisfaction scores, and referral patterns — built with advanced DAX and data modeling for operational decision-making.</p>
+            <a href="https://github.com/mahmoudkahled1955/Hospital-Emergency-Room-Dashboard" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Call%20Center.png" alt="Call Center Dashboard" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Power BI</span><span class="tool-badge">DAX</span></div>
+            <div class="project-title">Call Center Dashboard</div>
+            <p class="project-desc">Dual-view Power BI dashboard tracking 5 KPIs and 6 analytical charts, plus a Grid view for detailed drill-downs and data export — all built with advanced DAX measures.</p>
+            <a href="https://github.com/mahmoudkahled1955/Call-Center-Dashboard" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/layoffs.png" alt="SQL Data Cleaning" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">MySQL</span><span class="tool-badge">CTEs</span><span class="tool-badge">Window Functions</span></div>
+            <div class="project-title">Data Cleaning & Exploration in SQL</div>
+            <p class="project-desc">Cleaned and explored 2,000+ global tech layoffs in MySQL using deduplication, null handling, and standardization — with CTEs and window functions to uncover industry trends.</p>
+            <a href="https://github.com/mahmoudkahled1955/Data-Cleaning-and-Exploration-in-SQL" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Bike%20Sales%20Dashboard.png" alt="Bike Sales" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Excel</span><span class="tool-badge">Pivot Tables</span></div>
+            <div class="project-title">Bike Sales Dashboard in Excel</div>
+            <p class="project-desc">Interactive Excel dashboard with slicers analyzing bike sales trends by customer demographics, income level, and commute distance — with full data cleaning pipeline included.</p>
+            <a href="https://github.com/mahmoudkahled1955/Cleaning-Data-and-Building-Dashboard-in-Excel" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Data%20Professional%20Survey%20Breakdown.png" alt="Data Professional Survey" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Power BI</span><span class="tool-badge">Power Query</span></div>
+            <div class="project-title">Data Professional Survey Dashboard</div>
+            <p class="project-desc">Visualizes global survey responses from data professionals — covering salary by role and country, language preferences, work-life balance ratings, and barriers to entering the data field.</p>
+            <a href="https://github.com/mahmoudkahled1955/Data-Professional-Survey-Breakdown-in-Power-BI" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Airbnb%20Project.png" alt="Airbnb Dashboard" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Tableau</span></div>
+            <div class="project-title">Airbnb Dashboard by Tableau</div>
+            <p class="project-desc">Interactive Tableau dashboard exploring Airbnb pricing by neighborhood, average revenue by bedroom count, and seasonal booking patterns — designed to identify high-value market opportunities.</p>
+            <a href="https://github.com/mahmoudkahled1955/Building-Dashboard-by-Tableau" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Employee%20Satisfaction.png" alt="Employee Satisfaction" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Excel</span><span class="tool-badge">Power BI</span></div>
+            <div class="project-title">Employee Satisfaction Dashboard</div>
+            <p class="project-desc">Cleaned survey data in Excel, then built a Power BI dashboard visualizing key engagement drivers, department satisfaction scores, turnover risk indicators, and manager feedback trends.</p>
+            <a href="https://github.com/mahmoudkahled1955/Data-Cleaning-and-Visualizing-in-Excel-and-Power-BI" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-3">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Health%20Conditions%20and%20Lifestyle%20Overview.png" alt="Health Conditions" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">Power BI</span><span class="tool-badge">Excel</span></div>
+            <div class="project-title">Health Conditions & Lifestyle Overview</div>
+            <p class="project-desc">Power BI dashboard exploring the prevalence of Heart Attack, Diabetes, Stroke, and Kidney Disease in relation to lifestyle factors. Data cleaned and standardized in both Excel and Power BI.</p>
+            <a href="https://github.com/mahmoudkahled1955/Health-Conditions-and-Lifestyle-Overview" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-1">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/corona.jfif" alt="Corona Analysis" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">MySQL</span><span class="tool-badge">Window Functions</span></div>
+            <div class="project-title">Corona Data Analysis</div>
+            <p class="project-desc">Global COVID-19 data analysis using MySQL — cleaned and standardized data to extract insights on cases, deaths, and recoveries. Compared country-level performance and identified critical pandemic inflection points.</p>
+            <a href="https://github.com/mahmoudkahled1955/Corona-Data-Analysis" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+        <div class="project-card reveal reveal-delay-2">
+          <div class="project-img-wrap">
+            <img class="project-img" src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/resturant.jpg" alt="Restaurant Orders" />
+          </div>
+          <div class="project-body">
+            <div class="project-tools"><span class="tool-badge">MySQL</span><span class="tool-badge">Joins</span></div>
+            <div class="project-title">Restaurant Orders Analysis</div>
+            <p class="project-desc">Explored restaurant order data using MySQL multi-table joins. Uncovered top-selling items, category revenue, peak ordering hours, and average order value to support business decisions.</p>
+            <a href="https://github.com/mahmoudkahled1955/Restaurant-Orders-Analysis" class="project-link" target="_blank">View on GitHub</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Credentials</div>
+        <h2 class="section-title">Certifications</h2>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card reveal reveal-delay-1">
+          <div class="cert-img-wrap">
+            <img src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Alex.jpeg" alt="Data Analyst Bootcamp Certificate" />
+          </div>
+          <div class="cert-body">
+            <div class="cert-title">Data Analyst Bootcamp</div>
+            <div class="cert-issuer">Issued by <span>Alex The Analyst</span></div>
+          </div>
+        </div>
+        <div class="cert-card reveal reveal-delay-2">
+          <div class="cert-img-wrap">
+            <img src="https://mahmoudkahled1955.github.io/Mahmoud_Khaled_Portfolio.github.io/images/Cisco.jpg" alt="Data Analytics Essentials Certificate" />
+          </div>
+          <div class="cert-body">
+            <div class="cert-title">Data Analytics Essentials</div>
+            <div class="cert-issuer">Issued by <span>Cisco Networking Academy</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-label">Get in touch</div>
+          <h2 class="section-title">Let's Work<br>Together</h2>
+          <p style="color:var(--muted);font-size:0.95rem;line-height:1.8;font-weight:300;margin-top:1rem;">
+            I am currently open to junior data analyst roles, internships, and freelance projects.
+            Feel free to reach out — I would love to connect.
+          </p>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/mahmoud-khaled-169a55264/" class="social-link" target="_blank" title="LinkedIn">in</a>
+            <a href="https://github.com/mahmoudkahled1955" class="social-link" target="_blank" title="GitHub">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-val">Qalyubiyya, Egypt</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-item-label">Phone</div>
+                <div class="contact-item-val">+20 111 793 1982</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-val">mahmoudkhaled1955@gmail.com</div>
+              </div>
+            </div>
+            <div style="margin-top:1.5rem;">
+              <a href="https://drive.google.com/drive/u/1/folders/1QcrkRa0W3Wogo5DQw__tksPAmdsNePKY"
+                 class="btn btn-primary" target="_blank"
+                 style="width:100%;justify-content:center;">
+                Download Resume ↓
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Mahmoud Khaled · Data Analyst</p>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav background
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Scroll reveal with IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
 </html>
